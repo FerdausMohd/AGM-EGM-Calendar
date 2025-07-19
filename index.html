@@ -3,39 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <title>AGM/EGM Calendar</title>
-<link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" rel="stylesheet" />
 <style>
 body {
-font-family: 'Century Gothic', sans-serif;
+font-family: 'Open Sans', sans-serif;
 margin: 20px;
 }
 #calendar {
 max-width: 1000px;
-margin: 0 auto;
+margin: 20px auto;
 }
-.fc-button {
-background-color: #ff6600 !important;
-border: none !important;
+#form-container {
+text-align: center;
+margin-bottom: 20px;
 }
-.fc-button-primary:not(:disabled).fc-button-active,
-.fc-button-primary:not(:disabled):active {
-background-color: #e65c00 !important;
-}
-select, input[type="datetime-local"] {
-font-family: 'Century Gothic', sans-serif;
-padding: 5px;
+select, input[type="datetime-local"], button {
+padding: 8px;
+font-size: 14px;
 margin-right: 10px;
 }
-#eventForm {
-margin-bottom: 20px;
-text-align: center;
-}
-#eventForm button {
+button {
 background-color: #ff6600;
 border: none;
 color: white;
-padding: 8px 16px;
 cursor: pointer;
 }
 </style>
@@ -43,8 +34,9 @@ cursor: pointer;
 <body>
 
 <h2 style="text-align:center">AGM/EGM Calendar</h2>
-<div id="eventForm">
-<select id="propertyName">
+
+<div id="form-container">
+<select id="property">
 <option value="">-- Select Property --</option>
 <optgroup label="Laurelcap Property Management (Sel) Sdn Bhd">
 <option>3 Damansara (Lagenda Tower)</option>
@@ -94,17 +86,16 @@ cursor: pointer;
 <option>Conezion Residence</option>
 </optgroup>
 </select>
-<input type="datetime-local" id="eventDateTime">
-<button type="button" onclick="addEvent()">Add AGM/EGM</button>
+<input type="datetime-local" id="dateTime">
+<button onclick="addEvent()">Add AGM/EGM</button>
 </div>
 
-<div id='calendar'></div>
+<div id="calendar"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 const calendarEl = document.getElementById('calendar');
-
 window.calendar = new FullCalendar.Calendar(calendarEl, {
 initialView: 'dayGridMonth',
 headerToolbar: {
@@ -114,13 +105,12 @@ right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
 },
 events: []
 });
-
 window.calendar.render();
 });
 
 function addEvent() {
-const property = document.getElementById("propertyName").value;
-const datetime = document.getElementById("eventDateTime").value;
+const property = document.getElementById("property").value;
+const datetime = document.getElementById("dateTime").value;
 
 if (!property || !datetime) {
 alert("Please select both a property and a date/time.");
@@ -133,8 +123,9 @@ start: datetime,
 allDay: false
 });
 
-alert("AGM/EGM added for " + property);
+alert(`Event for ${property} added on ${new Date(datetime).toLocaleString()}`);
 }
 </script>
+
 </body>
 </html>
