@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>AGM/EGM Calendar</title>
-<link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet">
-<link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+<link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 <style>
 body {
 font-family: 'Century Gothic', sans-serif;
@@ -18,7 +18,8 @@ margin: 0 auto;
 background-color: #ff6600 !important;
 border: none !important;
 }
-.fc-button-primary:not(:disabled).fc-button-active, .fc-button-primary:not(:disabled):active {
+.fc-button-primary:not(:disabled).fc-button-active,
+.fc-button-primary:not(:disabled):active {
 background-color: #e65c00 !important;
 }
 select, input[type="datetime-local"] {
@@ -42,6 +43,7 @@ cursor: pointer;
 <body>
 
 <h2 style="text-align:center">AGM/EGM Calendar</h2>
+
 <div id="eventForm">
 <select id="propertyName">
 <optgroup label="Laurelcap Property Management (Sel) Sdn Bhd">
@@ -64,72 +66,4 @@ cursor: pointer;
 <option>Lavile KL</option>
 <option>Parkville Sunway Damansara</option>
 <option>Quinn Residences</option>
-<option>Sentral Suite</option>
-<option>Sky Vista</option>
-<option>Stellar Suites</option>
-<option>Sunsuria Avenue</option>
-<option>Sunsuria Forum</option>
-<option>Suria Garden</option>
-<option>Suria Residence</option>
-<option>Taman Amansiara</option>
-<option>The Arcuz @ Kelana Jaya</option>
-<option>The Breezeway</option>
-<option>The Estate @ Bangsar South</option>
-<option>The Park Residences</option>
-<option>The Treez @ Bukit Jalil</option>
-<option>Twins @ Damansara Heights</option>
-<option>Tuan 2egacy (Tuan 2)</option>
-<option>Tuan Residency (Tuan 1)</option>
-<option>Trion @ KL</option>
-<option>Trion 2 @ KL</option>
-<option>V-Residensi @ Selayang Heights</option>
-<option>Villa Orkid</option>
-<option>Waltz Residences</option>
-<option>Wisma Mah Sing & Mutiara</option>
-</optgroup>
-<optgroup label="Laurelcap Property Management Sdn Bhd">
-<option>Alstonia Residence</option>
-<option>Conezion Residence</option>
-</optgroup>
-</select>
-<input type="datetime-local" id="eventDateTime">
-<button onclick="addEvent()">Add AGM/EGM</button>
-</div>
-
-<div id='calendar'></div>
-
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
-<script>
-let calendar;
-document.addEventListener('DOMContentLoaded', function () {
-var calendarEl = document.getElementById('calendar');
-calendar = new FullCalendar.Calendar(calendarEl, {
-initialView: 'dayGridMonth',
-headerToolbar: {
-left: 'prev,next today',
-center: 'title',
-right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
-},
-events: []
-});
-calendar.render();
-});
-
-function addEvent() {
-var property = document.getElementById("propertyName").value;
-var datetime = document.getElementById("eventDateTime").value;
-
-if (property && datetime) {
-calendar.addEvent({
-title: property,
-start: datetime,
-allDay: false
-});
-alert("AGM/EGM added for " + property);
-} else {
-alert("Please select both property and date/time");
-}
-}
-</script>
-</body>
-</html>
+<option>Sent
