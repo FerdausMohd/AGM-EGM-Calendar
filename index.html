@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>AGM/EGM Calendar</title>
-<link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 <style>
 body {
@@ -43,9 +43,9 @@ cursor: pointer;
 <body>
 
 <h2 style="text-align:center">AGM/EGM Calendar</h2>
-
 <div id="eventForm">
 <select id="propertyName">
+<option value="">-- Select Property --</option>
 <optgroup label="Laurelcap Property Management (Sel) Sdn Bhd">
 <option>3 Damansara (Lagenda Tower)</option>
 <option>Armanee Condominium</option>
@@ -66,4 +66,75 @@ cursor: pointer;
 <option>Lavile KL</option>
 <option>Parkville Sunway Damansara</option>
 <option>Quinn Residences</option>
-<option>Sent
+<option>Sentral Suite</option>
+<option>Sky Vista</option>
+<option>Stellar Suites</option>
+<option>Sunsuria Avenue</option>
+<option>Sunsuria Forum</option>
+<option>Suria Garden</option>
+<option>Suria Residence</option>
+<option>Taman Amansiara</option>
+<option>The Arcuz @ Kelana Jaya</option>
+<option>The Breezeway</option>
+<option>The Estate @ Bangsar South</option>
+<option>The Park Residences</option>
+<option>The Treez @ Bukit Jalil</option>
+<option>Twins @ Damansara Heights</option>
+<option>Tuan 2egacy (Tuan 2)</option>
+<option>Tuan Residency (Tuan 1)</option>
+<option>Trion @ KL</option>
+<option>Trion 2 @ KL</option>
+<option>V-Residensi @ Selayang Heights</option>
+<option>Villa Orkid</option>
+<option>Waltz Residences</option>
+<option>Wisma Mah Sing & Mutiara</option>
+</optgroup>
+<optgroup label="Laurelcap Property Management Sdn Bhd">
+<option>Alstonia Residence</option>
+<option>Conezion Residence</option>
+</optgroup>
+</select>
+<input type="datetime-local" id="eventDateTime">
+<button type="button" onclick="addEvent()">Add AGM/EGM</button>
+</div>
+
+<div id='calendar'></div>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const calendarEl = document.getElementById('calendar');
+
+window.calendar = new FullCalendar.Calendar(calendarEl, {
+initialView: 'dayGridMonth',
+headerToolbar: {
+left: 'prev,next today',
+center: 'title',
+right: 'dayGridMonth,timeGridWeek,timeGridDay,listYear'
+},
+events: []
+});
+
+window.calendar.render();
+});
+
+function addEvent() {
+const property = document.getElementById("propertyName").value;
+const datetime = document.getElementById("eventDateTime").value;
+
+if (!property || !datetime) {
+alert("Please select both a property and a date/time.");
+return;
+}
+
+window.calendar.addEvent({
+title: property,
+start: datetime,
+allDay: false
+});
+
+alert("AGM/EGM added for " + property);
+}
+</script>
+</body>
+</html>
